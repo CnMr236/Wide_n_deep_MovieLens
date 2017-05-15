@@ -34,8 +34,7 @@ dataframe_train = dataframe[0:split_index]
 dataframe_test = dataframe[split_index:].reset_index(drop=True)
 dataframe_train = dataframe_train.dropna(how='any', axis=0)
 dataframe_test = dataframe_test.dropna(how='any', axis=0)
-#dataframe_train
-#dataframe_test.dtypes
+
   
 def build_estimator(model_dir, model_type):
 
