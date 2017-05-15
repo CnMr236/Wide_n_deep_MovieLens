@@ -25,8 +25,9 @@ ratings = pd.read_csv("//Users/ChrisM/Dataset/ml-1m/ratings.dat", sep="::", name
 users = pd.read_csv("//Users/ChrisM/Dataset/ml-1m/users.dat", sep="::", names=['userid','gender','age','occupation','zip'], skipinitialspace=True, skiprows=1, engine='python')
 movies = pd.read_csv("//Users/ChrisM/Dataset/ml-1m/movies.dat", sep="::", names=['movieid','title','genre'], skipinitialspace=True, skiprows=1, engine='python')
 dataframe = pd.merge(pd.merge(ratings,users),movies)
-dataframe = dataframe[0:100000]
-   
+dataframe = dataframe[0:100000] #Only use 100k Rows of Dataset
+  
+#Splitting Data for train and test           
 rows = len(dataframe)
 dataframe = dataframe.iloc[np.random.permutation(rows)].reset_index(drop=True)
 split_index = int(rows * 0.80)
