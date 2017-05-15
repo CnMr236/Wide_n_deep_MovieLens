@@ -33,6 +33,7 @@ dataframe = dataframe.iloc[np.random.permutation(rows)].reset_index(drop=True)
 split_index = int(rows * 0.80)
 dataframe_train = dataframe[0:split_index]
 dataframe_test = dataframe[split_index:].reset_index(drop=True)
+#Drop NaN Elements
 dataframe_train = dataframe_train.dropna(how='any', axis=0)
 dataframe_test = dataframe_test.dropna(how='any', axis=0)
 
