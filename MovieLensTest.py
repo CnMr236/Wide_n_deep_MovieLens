@@ -21,9 +21,9 @@ CONTINUOUS_COLUMNS = ["age","zip","userid", "movieid", "time"]
 
 
 #1ML-Dataset-Input
-ratings = pd.read_csv("//Users/ChrisM/Dataset/ml-1m/ratings.dat", sep="::", names=['userid','movieid','rating','time'], skipinitialspace=True, skiprows=1, engine='python') # Pandas load our dataset as a dataframe
-users = pd.read_csv("//Users/ChrisM/Dataset/ml-1m/users.dat", sep="::", names=['userid','gender','age','occupation','zip'], skipinitialspace=True, skiprows=1, engine='python')
-movies = pd.read_csv("//Users/ChrisM/Dataset/ml-1m/movies.dat", sep="::", names=['movieid','title','genre'], skipinitialspace=True, skiprows=1, engine='python')
+ratings = pd.read_csv("//ratings.dat", sep="::", names=['userid','movieid','rating','time'], skipinitialspace=True, skiprows=1, engine='python') # Pandas load our dataset as a dataframe
+users = pd.read_csv("//users.dat", sep="::", names=['userid','gender','age','occupation','zip'], skipinitialspace=True, skiprows=1, engine='python')
+movies = pd.read_csv("//movies.dat", sep="::", names=['movieid','title','genre'], skipinitialspace=True, skiprows=1, engine='python')
 dataframe = pd.merge(pd.merge(ratings,users),movies)
 dataframe = dataframe[0:100000] #Only use 100k Rows of Dataset
   
