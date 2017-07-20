@@ -13,10 +13,6 @@ tf.logging.set_verbosity(tf.logging.INFO)
 
 np.random.seed(42)
 
-COLUMNS = ["userid", "movieid", "rating","time"]
-LABEL = "rating"  
-FEATURES = ["userid", "movieid"]
-
 COLUMNS = ["userid", "movieid", "rating"]
 LABEL = "rating"  
 FEATURES = ["userid", "movieid"]
