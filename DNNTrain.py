@@ -22,7 +22,7 @@ LABEL = "rating"
 FEATURES = ["userid", "movieid"]
 
 #1M-MovieLens Data Input
-dataframe = pd.read_csv("/Users/ChrisM/TensoRSimulation/Data/userdata.csv", names=COLUMNS, skipinitialspace=True, skiprows=1, engine='python')
+dataframe = pd.read_csv("/Data/userdata.csv", names=COLUMNS, skipinitialspace=True, skiprows=1, engine='python')
 
 rows = len(dataframe)
 dataframe = dataframe.iloc[np.random.permutation(rows)].reset_index(drop=True)
