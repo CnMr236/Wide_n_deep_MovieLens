@@ -54,7 +54,7 @@ def main(unused_argv):
 	with tf.Session() as sess:
 		sess.run(tf.global_variables_initializer())
 		sess.run(tf.local_variables_initializer())
-		file = open("/Users/ChrisM/TensoRSimulation/Result.txt","w")
+		file = open("Result.txt","w")
 		file.write(str(pred))
 		file.close()
     	    
