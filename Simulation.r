@@ -8,7 +8,7 @@ mSimulations = expand.grid(vTrainTest,vMultiplikator)
 mSimulations = cbind(1:nrow(mSimulations),mSimulations)
 
 #load Dataset
-load("/Users/ChrisM/Downloads/Database_ML100k.Rdata")
+load("Database_ML100k.Rdata")
 
 #In Dataframes umwandeln 
 userdata = data.frame(mRatings, row.names = NULL)
@@ -29,13 +29,13 @@ testusertotal <- testusernew[,-(2)]
 Trainingset <- userdata[!(userdata$UserID %in% testusertotal$UserID & userdata$ItemID %in% testusertotal$ItemID.Rank),]
 
 #Write Data - Input für Deep Learning model
-write.csv(Trainingset, "/Users/ChrisM/TensoRSimulation/Data/userdata.csv")
+write.csv(Trainingset, "Data/userdata.csv")
 
 #TF-Model aufrufen / Trainieren
 library(tensorflow)
 Sys.setenv(TENSORFLOW_PYTHON="/usr/local/bin/python")
 Sys.setenv(TENSORFLOW_PYTHON="source ~/tensorflowC/bin/activate")
-TFTrain <- system("python /Users/ChrisM/TensoRSimulation/DNNRTrain.py", wait = TRUE)
+TFTrain <- system("python DNNRTrain.py", wait = TRUE)
 
 mResult=NULL
 #Simulationsschleife Test Datensatz
@@ -67,13 +67,13 @@ for(iSimulation in 1:nrow(mSimulations)){
     ActiveU$Rating <- c("NA")
     
     #Write Test-Data
-    write.csv(ActiveU, "/Users/ChrisM/TensoRSimulation/Data/testdata.csv")
+    write.csv(ActiveU, "Data/testdata.csv")
     
     #TF-Model aufrufen / Test
-    TFTest <- system("python /Users/ChrisM/TensoRSimulation/DNNRTest.py", wait = TRUE)
+    TFTest <- system("python DNNRTest.py", wait = TRUE)
     
     # Predict-Array aus TF-Model aufrufen
-    RArray <- read.table("/Users/ChrisM/TensoRSimulation/Result.txt", sep = ",", row.names = NULL)
+    RArray <- read.table("/Result.txt", sep = ",", row.names = NULL)
     
     #Rank relevantes Item ermitteln
     vRankingList <- rank(-RArray)
